@@ -2,6 +2,7 @@ import * as vscode from 'vscode'
 import { FrameworkOptions } from './models/menu.model'
 import { loadJson } from './utils/json.utils'
 import { verifyTechnologyDependency } from './utils/dependencies.utils'
+import { getProjectName } from './utils/projectName.utils'
 
 // test
 export function activate(context: vscode.ExtensionContext) {
@@ -80,15 +81,8 @@ export function activate(context: vscode.ExtensionContext) {
         return
       }
 
-      // Solicitar al usuario el nombre del proyecto
-      const projectName = await vscode.window.showInputBox({
-        prompt: 'Enter the name of your project',
-        placeHolder: 'my-project',
-      })
-
-      if (!projectName) {
-        return
-      }
+      // Obtener el nombre del proyecto
+      const projectName = await getProjectName()
 
       // Reemplazar el marcador de posición con el nombre del proyecto
       const finalCommand = command.replace('${projectName}', projectName)
