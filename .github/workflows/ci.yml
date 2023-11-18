@@ -1,0 +1,42 @@
+name: CI Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Formatter
+        run: npm run format
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Install Required Libraries (Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libatk1.0-0 libatk-bridge2.0-0 libxcomposite1 libxcursor1 libxdamage1 libxi6 libxtst6 libxss1 libxrandr2 libasound2 libpango-1.0-0 libcairo2 libcups2 libfontconfig1 libgcc1 libgdk-pixbuf2.0-0 libgtk-3-0 libpango-1.0-0 libpangocairo-1.0-0 libxcomposite1 libxcursor1 libxdamage1 libxi6 libxrender1 libxss1 libxtst6 libgbm1
+        if: runner.os == 'Linux'
+
+      - name: Run Tests (Linux)
+        run: xvfb-run -a npm test
+        if: runner.os == 'Linux'
+
+      - name: Run Tests (Non-Linux)
+        run: npm test
+        if: runner.os != 'Linux'
