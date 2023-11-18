@@ -30,12 +30,15 @@ export function activate(context: vscode.ExtensionContext) {
       const projectName = await askForProjectName()
 
       const projectDirectory = await selectProjectDirectory()
-      if (!projectDirectory) return
+      let finalCommand = command.replace('${projectName}', projectName)
 
-      const finalCommand = `cd ${projectDirectory} && ${command.replace(
-        '${projectName}',
-        projectName,
-      )}`
+      if (projectDirectory) {
+        finalCommand = `cd ${projectDirectory} && ${command.replace(
+          '${projectName}',
+          projectName,
+        )}`
+      }
+
       const terminal = vscode.window.createTerminal({
         name: 'Project Crafter Terminal',
       })
