@@ -1,8 +1,11 @@
 {
   "technologies": {
     "Node": {
-      "dependencyCheck": "npm --version",
-      "installCommand": "https://nodejs.org/",
+      "dependency": {
+        "name": "Node.js",
+        "installationUrl": "https://nodejs.org/en/download/",
+        "checkCommand": "node --version"
+      },
       "frameworks": {
         "React": {
           "Create React App": "npx create-react-app ${projectName}",
@@ -16,13 +19,38 @@
       }
     },
     "Rust": {
-      "dependencyCheck": "cargo --version",
-      "installCommand": "https://www.rust-lang.org/tools/install",
+      "dependency": {
+        "name": "Rust",
+        "installationUrl": "https://www.rust-lang.org/tools/install",
+        "checkCommand": "rustc --version"
+      },
       "frameworks": {
         "Cargo": {
           "Default": "cargo new ${projectName}",
           "WebAssembly": "cargo new ${projectName} --lib"
         }
+      }
+    },
+    "Python": {
+      "dependency": {
+        "name": "Python",
+        "installationUrl": "https://www.python.org/downloads/",
+        "checkCommand": "python --version"
+      },
+      "frameworks": {
+        "Django": "django-admin startproject ${projectName}",
+        "Flask": "flask new ${projectName}"
+      }
+    },
+    "Java": {
+      "dependency": {
+        "name": "Java",
+        "installationUrl": "https://www.oracle.com/java/technologies/downloads/",
+        "checkCommand": "java --version"
+      },
+      "installUrl": "https://www.oracle.com/java/technologies/javase-downloads.html",
+      "frameworks": {
+        "Spring": "spring init --dependencies=web ${projectName}"
       }
     }
   }

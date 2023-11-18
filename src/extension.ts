@@ -1,19 +1,16 @@
 import * as vscode from 'vscode'
-import * as path from 'path'
-import * as fs from 'fs'
-import { Menu, FrameworkOptions } from './models/menu.model'
+import { FrameworkOptions } from './models/menu.model'
+import { loadJson } from './utils/json.utils'
+import { verifyTechnologyDependency } from './utils/dependencies.utils'
 
 // test
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     'project-crafter.createProject',
     async () => {
-      // Leer el archivo JSON
-      const menuPath = path.join(context.extensionPath, 'data', 'menu.json')
-      const menuJson = fs.readFileSync(menuPath, 'utf8')
-      const menu: Menu = JSON.parse(menuJson)
+      const menu = loadJson(context)
 
-      // Mostrar QuickPick con tecnologías
+      // Show QuickPick with technologies
       const technologies = Object.keys(menu.technologies)
       const selectedTechnology = await vscode.window.showQuickPick(
         technologies,
@@ -28,8 +25,17 @@ export function activate(context: vscode.ExtensionContext) {
 
       const technology = menu.technologies[selectedTechnology]
 
-      // Mostrar QuickPick con frameworks
+      // Verify package manager
+      const isPackageManagerInstalled = await verifyTechnologyDependency(
+        technology.dependency,
+      )
+      if (!isPackageManagerInstalled) {
+        return
+      }
+
       const frameworks = Object.keys(technology.frameworks)
+
+      // Show QuickPick with frameworks
       const selectedFramework = await vscode.window.showQuickPick(frameworks, {
         placeHolder: `Choose a ${selectedTechnology} framework`,
       })
@@ -40,7 +46,6 @@ export function activate(context: vscode.ExtensionContext) {
 
       const frameworkOptions = technology.frameworks[selectedFramework]
 
-      // Función para manejar opciones anidadas
       async function handleFrameworkOptions(
         options: FrameworkOptions,
       ): Promise<string> {

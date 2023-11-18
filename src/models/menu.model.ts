@@ -1,14 +1,16 @@
-export interface PackageManager {
-  command: string
-  downloadUrl: string
-}
-
 export interface FrameworkOptions {
   [key: string]: string | FrameworkOptions
 }
 
+export interface TechnologyDependency {
+  name: string
+  installationUrl: string
+  checkCommand: string
+}
+
 export interface Technology {
-  packageManager: PackageManager
+  dependency: TechnologyDependency
+  installUrl: string
   frameworks: { [key: string]: FrameworkOptions }
 }
 
