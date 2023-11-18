@@ -49,10 +49,41 @@ export function activate(context: vscode.ExtensionContext) {
       })
       terminal.show()
       terminal.sendText(finalCommand)
+
+      // Luego, abre el Webview
+      const panel = vscode.window.createWebviewPanel(
+        'extensionInformation',
+        'Información de la Extensión',
+        vscode.ViewColumn.One,
+        {},
+      )
+
+      // Contenido HTML del webview
+      panel.webview.html = getWebviewContent()
     },
   )
 
   context.subscriptions.push(disposable)
 }
 
-export function deactivate() {}
+function getWebviewContent() {
+  // Contenido HTML del webview
+  return `
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <style>
+              /* Estilos CSS aquí */
+          </style>
+      </head>
+      <body>
+          <h1>Información de la Extensión</h1>
+          <p>Descripción de la extensión y más información...</p>
+      </body>
+      </html>
+  `
+}
+
+export function deactivate() {
+  // Lógica de desactivación si es necesario
+}
