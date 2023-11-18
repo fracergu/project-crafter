@@ -9,14 +9,83 @@
       "frameworks": {
         "React": {
           "Create React App": {
-            "command": "npx create-react-app ${projectName}"
+            "npm": {
+              "dependency": {
+                "name": "npm",
+                "installationUrl": "https://www.npmjs.com/get-npm",
+                "checkCommand": "npm --version"
+              },
+              "command": "npm create-react-app ${projectName}"
+            },
+            "yarn": {
+              "dependency": {
+                "name": "Yarn",
+                "installationUrl": "https://classic.yarnpkg.com/en/docs/install",
+                "checkCommand": "yarn --version"
+              },
+              "command": "yarn create react-app ${projectName}"
+            },
+            "pnpm": {
+              "dependency": {
+                "name": "pnpm",
+                "installationUrl": "https://pnpm.io/installation",
+                "checkCommand": "pnpm --version"
+              },
+              "command": "pnpm create-react-app ${projectName}"
+            }
           },
           "Vite": {
             "JavaScript": {
-              "command": "npm create vite@latest ${projectName} -- --template react"
+              "npm": {
+                "dependency": {
+                  "name": "npm",
+                  "installationUrl": "https://www.npmjs.com/get-npm",
+                  "checkCommand": "npm --version"
+                },
+                "command": "npm create vite@latest ${projectName} -- --template react"
+              },
+              "yarn": {
+                "dependency": {
+                  "name": "Yarn",
+                  "installationUrl": "https://classic.yarnpkg.com/en/docs/install",
+                  "checkCommand": "yarn --version"
+                },
+                "command": "yarn create vite@latest ${projectName} --template react"
+              },
+              "pnpm": {
+                "dependency": {
+                  "name": "pnpm",
+                  "installationUrl": "https://pnpm.io/installation",
+                  "checkCommand": "pnpm --version"
+                },
+                "command": "pnpm create vite@latest ${projectName} -- --template react"
+              }
             },
             "TypeScript": {
-              "command": "npm create vite@latest ${projectName} -- --template react-ts"
+              "npm": {
+                "dependency": {
+                  "name": "npm",
+                  "installationUrl": "https://www.npmjs.com/get-npm",
+                  "checkCommand": "npm --version"
+                },
+                "command": "npm create vite@latest ${projectName} -- --template react-ts"
+              },
+              "yarn": {
+                "dependency": {
+                  "name": "Yarn",
+                  "installationUrl": "https://classic.yarnpkg.com/en/docs/install",
+                  "checkCommand": "yarn --version"
+                },
+                "command": "yarn create vite@latest ${projectName} --template react-ts"
+              },
+              "pnpm": {
+                "dependency": {
+                  "name": "pnpm",
+                  "installationUrl": "https://pnpm.io/installation",
+                  "checkCommand": "pnpm --version"
+                },
+                "command": "pnpm create vite@latest ${projectName} -- --template react-ts"
+              }
             }
           }
         },
@@ -29,6 +98,185 @@
           "command": "ng new ${projectName}"
         },
         "Express": { "command": "npx express-generator ${projectName}" }
+      }
+    },
+    "Python": {
+      "dependency": {
+        "name": "Python",
+        "installationUrl": "https://www.python.org/downloads/",
+        "checkCommand": "python --version"
+      },
+      "frameworks": {
+        "Django": {
+          "command": "django-admin startproject ${projectName}"
+        },
+        "Flask": {
+          "command": "flask new ${projectName}"
+        }
+      }
+    },
+    "Astro": {
+      "dependency": {
+        "name": "Node.js",
+        "installationUrl": "https://nodejs.org/en/download/",
+        "checkCommand": "node --version"
+      },
+      "frameworks": {
+        "Astro": {
+          "npm": {
+            "dependency": {
+              "name": "npm",
+              "installationUrl": "https://www.npmjs.com/get-npm",
+              "checkCommand": "npm --version"
+            },
+            "command": "npm create astro ${projectName}"
+          },
+          "yarn": {
+            "dependency": {
+              "name": "Yarn",
+              "installationUrl": "https://classic.yarnpkg.com/en/docs/install",
+              "checkCommand": "yarn --version"
+            },
+            "command": "yarn create astro ${projectName}"
+          },
+          "pnpm": {
+            "dependency": {
+              "name": "pnpm",
+              "installationUrl": "https://pnpm.io/installation",
+              "checkCommand": "pnpm --version"
+            },
+            "command": "pnpm create astro ${projectName}"
+          }
+        }
+      }
+    },
+    "Next.js": {
+      "dependency": {
+        "name": "Node.js",
+        "installationUrl": "https://nodejs.org/en/download/",
+        "checkCommand": "node --version"
+      },
+      "frameworks": {
+        "Next.js": {
+          "npm": {
+            "dependency": {
+              "name": "npm",
+              "installationUrl": "https://www.npmjs.com/get-npm",
+              "checkCommand": "npm --version"
+            },
+            "command": "npm create next-app ${projectName}"
+          },
+          "yarn": {
+            "dependency": {
+              "name": "Yarn",
+              "installationUrl": "https://classic.yarnpkg.com/en/docs/install",
+              "checkCommand": "yarn --version"
+            },
+            "command": "yarn create next-app ${projectName}"
+          },
+          "pnpm": {
+            "dependency": {
+              "name": "pnpm",
+              "installationUrl": "https://pnpm.io/installation",
+              "checkCommand": "pnpm --version"
+            },
+            "command": "pnpm create next-app ${projectName}"
+          },
+          "bunx": {
+            "dependency": {
+              "name": "Bunx",
+              "installationUrl": "https://bun.dev",
+              "checkCommand": "bunx --version"
+            },
+            "command": "bunx create next-app ${projectName}"
+          }
+        }
+      }
+    },
+    "Qwik": {
+      "dependency": {
+        "name": "Node.js",
+        "installationUrl": "https://nodejs.org/en/download/",
+        "checkCommand": "node --version"
+      },
+      "frameworks": {
+        "Qwik": {
+          "npm": {
+            "dependency": {
+              "name": "npm",
+              "installationUrl": "https://www.npmjs.com/get-npm",
+              "checkCommand": "npm --version"
+            },
+            "command": "npm create qwik ${projectName}"
+          },
+          "yarn": {
+            "dependency": {
+              "name": "Yarn",
+              "installationUrl": "https://classic.yarnpkg.com/en/docs/install",
+              "checkCommand": "yarn --version"
+            },
+            "command": "yarn create qwik ${projectName}"
+          },
+          "pnpm": {
+            "dependency": {
+              "name": "pnpm",
+              "installationUrl": "https://pnpm.io/installation",
+              "checkCommand": "pnpm --version"
+            },
+            "command": "pnpm create qwik ${projectName}"
+          }
+        }
+      }
+    },
+    "Rust": {
+      "dependency": {
+        "name": "Rust",
+        "installationUrl": "https://www.rust-lang.org/tools/install",
+        "checkCommand": "rustc --version"
+      },
+      "frameworks": {
+        "Cargo": {
+          "Default": {
+            "command": "cargo new ${projectName}"
+          },
+          "WebAssembly": {
+            "command": "cargo new ${projectName} --lib"
+          }
+        }
+      }
+    },
+    "Go": {
+      "dependency": {
+        "name": "Go",
+        "installationUrl": "https://golang.org/doc/install",
+        "checkCommand": "go version"
+      },
+      "frameworks": {
+        "Default": {
+          "command": "go mod init ${projectName}"
+        },
+        "Gin": {
+          "command": "go get -u github.com/gin-gonic/gin"
+        },
+        "Echo": {
+          "command": "go get -u github.com/labstack/echo/v4"
+        },
+        "Fiber": {
+          "command": "go get -u github.com/gofiber/fiber/v2"
+        }
+      }
+    },
+    "Java": {
+      "dependency": {
+        "name": "Java",
+        "installationUrl": "https://www.oracle.com/java/technologies/downloads/",
+        "checkCommand": "java --version"
+      },
+      "installUrl": "https://www.oracle.com/java/technologies/javase-downloads.html",
+      "frameworks": {
+        "Spring": {
+          "command": "curl https://start.spring.io/starter.zip -o ${projectName}.zip"
+        }
       }
     }
   }
