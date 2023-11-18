@@ -4,14 +4,13 @@ import { loadJson } from './utils/json.utils'
 import { verifyTechnologyDependency } from './utils/dependencies.utils'
 import { getProjectName } from './utils/projectName.utils'
 
-// test
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     'project-crafter.createProject',
     async () => {
       const menu = loadJson(context)
 
-      // Show QuickPick with technologies
+      // Mostrar QuickPick con tecnologías
       const technologies = Object.keys(menu.technologies)
       const selectedTechnology = await vscode.window.showQuickPick(
         technologies,
@@ -47,6 +46,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       const frameworkOptions = technology.frameworks[selectedFramework]
 
+      // Función para manejar opciones anidadas
       async function handleFrameworkOptions(
         options: FrameworkOptions,
       ): Promise<string> {
