@@ -27,5 +27,14 @@ jobs:
       - name: Run Linter
         run: npm run lint
 
-      - name: Run Tests
-        run: npm run test
+      - name: Install Xvfb (Linux)
+        run: sudo apt-get install -y xvfb
+        if: runner.os == 'Linux'
+
+      - name: Run Tests with Xvfb (Linux)
+        run: xvfb-run -a npm test
+        if: runner.os == 'Linux'
+
+      - name: Run Tests (Non-Linux)
+        run: npm test
+        if: runner.os != 'Linux'
