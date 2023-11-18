@@ -1,0 +1,29 @@
+{
+  "technologies": {
+    "Node": {
+      "dependencyCheck": "npm --version",
+      "installCommand": "https://nodejs.org/",
+      "frameworks": {
+        "React": {
+          "Create React App": "npx create-react-app ${projectName}",
+          "Vite": {
+            "JavaScript": "npm create vite@latest ${projectName} -- --template react",
+            "TypeScript": "npm create vite@latest ${projectName} -- --template react-ts"
+          }
+        },
+        "Angular": "ng new ${projectName}",
+        "Express": "npx express-generator ${projectName}"
+      }
+    },
+    "Rust": {
+      "dependencyCheck": "cargo --version",
+      "installCommand": "https://www.rust-lang.org/tools/install",
+      "frameworks": {
+        "Cargo": {
+          "Default": "cargo new ${projectName}",
+          "WebAssembly": "cargo new ${projectName} --lib"
+        }
+      }
+    }
+  }
+}
