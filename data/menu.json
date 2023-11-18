@@ -8,62 +8,27 @@
       },
       "frameworks": {
         "React": {
-          "Create React App": "npx create-react-app ${projectName}",
+          "Create React App": {
+            "command": "npx create-react-app ${projectName}"
+          },
           "Vite": {
-            "JavaScript": "npm create vite@latest ${projectName} -- --template react",
-            "TypeScript": "npm create vite@latest ${projectName} -- --template react-ts"
+            "JavaScript": {
+              "command": "npm create vite@latest ${projectName} -- --template react"
+            },
+            "TypeScript": {
+              "command": "npm create vite@latest ${projectName} -- --template react-ts"
+            }
           }
         },
-        "Angular": "ng new ${projectName}",
-        "Express": "npx express-generator ${projectName}"
-      }
-    },
-    "Rust": {
-      "dependency": {
-        "name": "Rust",
-        "installationUrl": "https://www.rust-lang.org/tools/install",
-        "checkCommand": "rustc --version"
-      },
-      "frameworks": {
-        "Cargo": {
-          "Default": "cargo new ${projectName}",
-          "WebAssembly": "cargo new ${projectName} --lib"
-        }
-      }
-    },
-    "Python": {
-      "dependency": {
-        "name": "Python",
-        "installationUrl": "https://www.python.org/downloads/",
-        "checkCommand": "python --version"
-      },
-      "frameworks": {
-        "Django": "django-admin startproject ${projectName}",
-        "Flask": "flask new ${projectName}"
-      }
-    },
-    "Java": {
-      "dependency": {
-        "name": "Java",
-        "installationUrl": "https://www.oracle.com/java/technologies/downloads/",
-        "checkCommand": "java --version"
-      },
-      "installUrl": "https://www.oracle.com/java/technologies/javase-downloads.html",
-      "frameworks": {
-        "Spring": "spring init --dependencies=web ${projectName}"
-      }
-    },
-    "Golang": {
-      "dependency": {
-        "name": "Go",
-        "installationUrl": "https://golang.org/doc/install",
-        "checkCommand": "go version"
-      },
-      "frameworks": {
-        "Default": "go mod init ${projectName}",
-        "Gin": "go get -u github.com/gin-gonic/gin",
-        "Echo": "go get -u github.com/labstack/echo/v4",
-        "Fiber": "go get -u github.com/gofiber/fiber/v2"
+        "Angular": {
+          "dependency": {
+            "name": "Angular CLI",
+            "installationUrl": "https://angular.io/cli",
+            "checkCommand": "ng --version"
+          },
+          "command": "ng new ${projectName}"
+        },
+        "Express": { "command": "npx express-generator ${projectName}" }
       }
     }
   }
