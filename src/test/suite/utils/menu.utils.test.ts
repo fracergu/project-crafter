@@ -18,4 +18,15 @@ suite('Menu Utils Tests', () => {
     assert.strictEqual(isNodeWithCommand(commandObj), true)
     assert.strictEqual(isNodeWithCommand(frameworkObj), false)
   })
+
+  test('isCommandWithDependency correctly identifies a nested CommandWithDependency object', () => {
+    const commandObj = { command: 'some-command' }
+    const frameworkObj = {
+      option1: commandObj,
+      option2: 'some-string',
+    }
+
+    assert.strictEqual(isNodeWithCommand(commandObj), true)
+    assert.strictEqual(isNodeWithCommand(frameworkObj), false)
+  })
 })

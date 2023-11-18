@@ -36,9 +36,10 @@ export const loadJson = (context: vscode.ExtensionContext): Menu => {
  */
 export const verifyTechnologyDependency = async (
   dependency: TechnologyDependency,
+  execFunction = exec,
 ): Promise<boolean> =>
   new Promise((resolve) => {
-    exec(dependency.checkCommand, (error) => {
+    execFunction(dependency.checkCommand, (error) => {
       if (error) {
         vscode.window.showErrorMessage(
           `Dependency not found: ${dependency.name}. Please install it from ${dependency.installationUrl}`,
