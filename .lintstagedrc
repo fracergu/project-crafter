@@ -1,0 +1,7 @@
+{
+  "*.ts": [
+    "eslint --ignore-path .gitignore . --ext .ts --fix",
+    "prettier --ignore-path .gitignore --write \"**/*.ts\"",
+    "git add"
+  ]
+}

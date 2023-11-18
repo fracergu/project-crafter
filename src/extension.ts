@@ -1,8 +1,9 @@
 import * as vscode from 'vscode'
 import * as path from 'path'
 import * as fs from 'fs'
-import { Menu, Technology, FrameworkOptions } from './models/menu.model'
+import { Menu, FrameworkOptions } from './models/menu.model'
 
+// test
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     'project-crafter.createProject',
