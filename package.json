@@ -27,7 +27,8 @@
     "lint": "eslint . --ext ts",
     "test": "node ./out/test/runTest.js",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier --write \"**/*.ts\""
+    "format": "prettier --write \"**/*.ts\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.3",
@@ -40,6 +41,8 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "glob": "^10.3.10",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
     "mocha": "^10.2.0",
     "prettier": "^3.1.0",
     "typescript": "^5.2.2"
