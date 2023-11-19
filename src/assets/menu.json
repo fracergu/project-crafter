@@ -15,7 +15,7 @@
                 "installationUrl": "https://www.npmjs.com/get-npm",
                 "checkCommand": "npm --version"
               },
-              "command": "npm create-react-app ${projectName}"
+              "command": "npx create-react-app ${projectName}"
             },
             "yarn": {
               "dependency": {
@@ -31,7 +31,7 @@
                 "installationUrl": "https://pnpm.io/installation",
                 "checkCommand": "pnpm --version"
               },
-              "command": "pnpm create-react-app ${projectName}"
+              "command": "pnpm exec create-react-app ${projectName}"
             }
           },
           "Vite": {
