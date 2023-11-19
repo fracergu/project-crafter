@@ -1,4 +1,13 @@
 import * as vscode from 'vscode'
+import * as path from 'path'
+import * as fs from 'fs'
+import {
+  getFolderPathMessage,
+  getYesOption,
+  getNoOption,
+  getProjectNamePrompt,
+  getSelectPrompt,
+} from './prompts.utils'
 
 /**
  * Generates a whimsical and random name composed of three parts: an adjective, a color, and a noun.
@@ -65,7 +74,7 @@ export const askForProjectName = async (): Promise<string> => {
   const funnyPlaceholder = generateFunnyName()
 
   const projectName = await vscode.window.showInputBox({
-    prompt: 'Enter the name of your project',
+    prompt: getProjectNamePrompt,
     placeHolder: funnyPlaceholder,
   })
 
@@ -77,10 +86,13 @@ export const askForProjectName = async (): Promise<string> => {
  *
  * @returns A promise that resolves to a boolean indicating whether the user wants to select a specific folder.
  */
-const askToSelectProjectDirectory = async (): Promise<boolean> => {
-  const shouldSelectFolder = await vscode.window.showQuickPick(['Yes', 'No'], {
-    placeHolder: 'Do you want to select a specific folder for your project?',
-  })
+export const askToSelectProjectDirectory = async (): Promise<boolean> => {
+  const shouldSelectFolder = await vscode.window.showQuickPick(
+    [getYesOption, getNoOption],
+    {
+      placeHolder: getFolderPathMessage,
+    },
+  )
 
   return shouldSelectFolder === 'Yes'
 }
@@ -93,7 +105,7 @@ const askToSelectProjectDirectory = async (): Promise<boolean> => {
 export const selectProjectDirectory = async (): Promise<string | undefined> => {
   const options: vscode.OpenDialogOptions = {
     canSelectMany: false,
-    openLabel: 'Select',
+    openLabel: getSelectPrompt,
     canSelectFolders: true,
     canSelectFiles: false,
   }
@@ -108,4 +120,20 @@ export const selectProjectDirectory = async (): Promise<string | undefined> => {
   }
 
   return undefined
+}
+
+export const getLangConfig = () => {
+  const idioma = vscode.env.language
+  const rutaArchivo = path.join(__dirname, `../locales/${idioma}.json`)
+
+  try {
+    const contenido = fs.readFileSync(rutaArchivo, 'utf8')
+    const configuracion = JSON.parse(contenido)
+    return configuracion
+  } catch (error) {
+    console.error(
+      `Error al cargar el archivo de configuración del idioma: ${error}`,
+    )
+    return undefined
+  }
 }

@@ -9,6 +9,10 @@ import {
   Menu,
   TechnologyDependency,
 } from '../models/menu.model'
+import {
+  getDependencyNotFoundMessage,
+  getSelectAnOptionPrompt,
+} from './prompts.utils'
 
 /**
  * Loads and parses the JSON file containing the menu configurations.
@@ -41,9 +45,10 @@ export const verifyTechnologyDependency = async (
   new Promise((resolve) => {
     execFunction(dependency.checkCommand, (error) => {
       if (error) {
-        vscode.window.showErrorMessage(
-          `Dependency not found: ${dependency.name}. Please install it from ${dependency.installationUrl}`,
-        )
+        const errorMessage = getDependencyNotFoundMessage
+          .replace('{0}', dependency.name)
+          .replace('{1}', dependency.installationUrl)
+        vscode.window.showErrorMessage(errorMessage)
         resolve(false)
       } else {
         resolve(true)
@@ -80,7 +85,7 @@ export const traverseOptions = async (
   const selectedOption = await vscode.window.showQuickPick(
     Object.keys(options),
     {
-      placeHolder: 'Select an option',
+      placeHolder: getSelectAnOptionPrompt,
     },
   )
   if (!selectedOption) return ''

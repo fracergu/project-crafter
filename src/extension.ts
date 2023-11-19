@@ -4,8 +4,14 @@ import * as fs from 'fs'
 import { Menu } from './models/menu.model'
 import { traverseOptions, verifyTechnologyDependency } from './utils/menu.utils'
 import { askForProjectName, selectProjectDirectory } from './utils/app.utils'
+import { getTechnologyPrompt, getTerminalName } from './utils/prompts.utils'
 
 export function activate(context: vscode.ExtensionContext) {
+  console.log(
+    vscode.workspace
+      .getConfiguration()
+      .get('project-crafter.creatreProject.selectTechnology'),
+  )
   const disposable = vscode.commands.registerCommand(
     'project-crafter.createProject',
     async () => {
@@ -20,7 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
       const selectedTechnology = await vscode.window.showQuickPick(
         Object.keys(menu.technologies),
         {
-          placeHolder: 'Select the technology for your project',
+          placeHolder: getTechnologyPrompt,
         },
       )
       if (!selectedTechnology) return
@@ -44,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       const terminal = vscode.window.createTerminal({
-        name: 'Project Crafter Terminal',
+        name: getTerminalName,
       })
       terminal.show()
       terminal.sendText(finalCommand)
