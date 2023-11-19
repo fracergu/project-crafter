@@ -1,8 +1,9 @@
 import * as vscode from 'vscode'
-import * as path from 'path'
-import * as fs from 'fs'
-import { Menu } from './models/menu.model'
-import { traverseOptions, verifyTechnologyDependency } from './utils/menu.utils'
+import {
+  loadJson,
+  traverseOptions,
+  verifyTechnologyDependency,
+} from './utils/menu.utils'
 import { askForProjectName, selectProjectDirectory } from './utils/app.utils'
 import { getTechnologyPrompt, getTerminalName } from './utils/prompts.utils'
 
@@ -10,13 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     'project-crafter.createProject',
     async () => {
-      const menuPath = path.join(
-        context.extensionPath,
-        'src/assets',
-        'menu.json',
-      )
-      const menuJson = fs.readFileSync(menuPath, 'utf8')
-      const menu: Menu = JSON.parse(menuJson)
+      const menu = loadJson(context)
 
       const selectedTechnology = await vscode.window.showQuickPick(
         Object.keys(menu.technologies),

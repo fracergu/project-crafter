@@ -25,7 +25,7 @@ import {
  * @returns The parsed Menu object containing the structure of technologies and their associated options.
  */
 export const loadJson = (context: vscode.ExtensionContext): Menu => {
-  const menuPath = path.join(context.extensionPath, 'src/assets', 'menu.json')
+  const menuPath = path.join(context.extensionPath, 'out/assets', 'menu.json')
   const menuJson = fs.readFileSync(menuPath, 'utf8')
   const menu: Menu = JSON.parse(menuJson)
   return menu
