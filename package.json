@@ -17,11 +17,31 @@
         "command": "project-crafter.createProject",
         "title": "Project Crafter: Create Project"
       }
+    ],
+    "localizations": [
+      {
+        "languageId": "en",
+        "translations": [
+          {
+            "id": "project-crafter.createProject",
+            "path": "./out/locales/en.json"
+          }
+        ]
+      },
+      {
+        "languageId": "es",
+        "translations": [
+          {
+            "id": "project-crafter.createProject",
+            "path": "./out/locales/es.json"
+          }
+        ]
+      }
     ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "compile": "tsc -p ./ && node i18nSetup.js",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint . --ext ts",
@@ -34,6 +54,7 @@
   "devDependencies": {
     "@types/chai": "^4.3.10",
     "@types/mocha": "^10.0.4",
+    "@types/ncp": "^2.0.8",
     "@types/node": "18.x",
     "@types/sinon": "^17.0.1",
     "@types/vscode": "^1.84.0",
@@ -48,6 +69,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "mocha": "^10.2.0",
+    "ncp": "^2.0.0",
     "prettier": "^3.1.0",
     "sinon": "^17.0.1",
     "typescript": "^5.2.2"

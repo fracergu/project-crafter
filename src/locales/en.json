@@ -1,0 +1,11 @@
+{
+  "project-crafter.lang.selectTechnology": "Select the technology for your project",
+  "project-crafter.lang.terminalName": "Project Crafter Terminal",
+  "project-crafter.lang.folderPath": "Do you want to select a specific folder for your project?",
+  "project-crafter.lang.folderPath.yes": "Yes",
+  "project-crafter.lang.folderPath.no": "No",
+  "project-crafter.lang.projectName": "Enter the name of your project",
+  "project-crafter.lang.select": "Select",
+  "project-crafter.lang.selectAnOption": "Select an option",
+  "project-crafter.lang.dependencyNotFoundMessage": "Dependency not found: {0}. Please install it from {1}"
+}

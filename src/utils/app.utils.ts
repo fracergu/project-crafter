@@ -1,4 +1,13 @@
 import * as vscode from 'vscode'
+import * as path from 'path'
+import * as fs from 'fs'
+import {
+  getFolderPathMessage,
+  getYesOption,
+  getNoOption,
+  getProjectNamePrompt,
+  getSelectPrompt,
+} from './prompts.utils'
 
 /**
  * Generates a whimsical and random name composed of three parts: an adjective, a color, and a noun.
@@ -65,7 +74,7 @@ export const askForProjectName = async (): Promise<string> => {
   const funnyPlaceholder = generateFunnyName()
 
   const projectName = await vscode.window.showInputBox({
-    prompt: 'Enter the name of your project',
+    prompt: getProjectNamePrompt,
     placeHolder: funnyPlaceholder,
   })
 
@@ -77,10 +86,13 @@ export const askForProjectName = async (): Promise<string> => {
  *
  * @returns A promise that resolves to a boolean indicating whether the user wants to select a specific folder.
  */
-const askToSelectProjectDirectory = async (): Promise<boolean> => {
-  const shouldSelectFolder = await vscode.window.showQuickPick(['Yes', 'No'], {
-    placeHolder: 'Do you want to select a specific folder for your project?',
-  })
+export const askToSelectProjectDirectory = async (): Promise<boolean> => {
+  const shouldSelectFolder = await vscode.window.showQuickPick(
+    [getYesOption, getNoOption],
+    {
+      placeHolder: getFolderPathMessage,
+    },
+  )
 
   return shouldSelectFolder === 'Yes'
 }
@@ -93,7 +105,7 @@ const askToSelectProjectDirectory = async (): Promise<boolean> => {
 export const selectProjectDirectory = async (): Promise<string | undefined> => {
   const options: vscode.OpenDialogOptions = {
     canSelectMany: false,
-    openLabel: 'Select',
+    openLabel: getSelectPrompt,
     canSelectFolders: true,
     canSelectFiles: false,
   }
@@ -108,4 +120,24 @@ export const selectProjectDirectory = async (): Promise<string | undefined> => {
   }
 
   return undefined
+}
+
+/**
+ * Gets the language configuration for the extension.
+ * The language configuration is stored in a JSON file in the locales folder.
+ * The language is determined by the VS Code language setting.
+ *
+ * @returns An object containing the language configuration.
+ */
+export const getLangConfig = (): Record<string, string> | undefined => {
+  const language = vscode.env.language
+  const pathFile = path.join(__dirname, `../locales/${language}.json`)
+
+  try {
+    const fileContent = fs.readFileSync(pathFile, 'utf8')
+    const configuracion = JSON.parse(fileContent)
+    return configuracion
+  } catch (error) {
+    return undefined
+  }
 }
