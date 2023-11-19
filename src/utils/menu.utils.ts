@@ -10,6 +10,7 @@ import {
   TechnologyDependency,
 } from '../models/menu.model'
 import {
+  getDependencyNotFoundButton,
   getDependencyNotFoundMessage,
   getSelectAnOptionPrompt,
 } from './prompts.utils'
@@ -45,10 +46,26 @@ export const verifyTechnologyDependency = async (
   new Promise((resolve) => {
     execFunction(dependency.checkCommand, (error) => {
       if (error) {
-        const errorMessage = getDependencyNotFoundMessage
-          .replace('{0}', dependency.name)
-          .replace('{1}', dependency.installationUrl)
-        vscode.window.showErrorMessage(errorMessage)
+        const errorMessage = getDependencyNotFoundMessage.replace(
+          '{0}',
+          dependency.name,
+        )
+
+        const openUrlButton = getDependencyNotFoundButton.replace(
+          '{0}',
+          dependency.installationUrl,
+        )
+
+        vscode.window
+          .showErrorMessage(errorMessage, openUrlButton)
+          .then((value) => {
+            if (value === openUrlButton) {
+              vscode.env.openExternal(
+                vscode.Uri.parse(dependency.installationUrl),
+              )
+            }
+          })
+
         resolve(false)
       } else {
         resolve(true)
