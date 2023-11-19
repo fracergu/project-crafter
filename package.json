@@ -1,7 +1,16 @@
 {
   "name": "project-crafter",
-  "displayName": "project-crafter",
+  "displayName": "Project Crafter",
   "description": "Streamlined Project Setup",
+  "author": {
+    "name": "Bug busters"
+  },
+  "publisher": "bug-busters",
+  "icon": "assets/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fracergu/project-crafter.git"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.84.0"
