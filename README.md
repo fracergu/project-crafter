@@ -1,71 +1,56 @@
-# project-crafter README
+# ProjectCrafter
 
-This is the README for your extension "project-crafter". After writing up a brief description, we recommend including the following sections.
+![ProjectCrafter Logo](https://i.postimg.cc/FHJSD3zy/Project-Crafter-Logo.png)
 
-## Features
+## Project Description
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+ProjectCrafter is an agile development Visual Studio Code extension designed to simplify and automate the creation of software projects in various technologies and frameworks. Through an intuitive interface and a guided process, it allows developers to configure and start new projects quickly and efficiently directly from the Visual Studio Code environment.
 
-For example if there is an image subfolder under your extension project workspace:
+## Key Features
 
-\!\[feature X\]\(images/feature-x.png\)
+- **Interactive Technology Selection:** Enables users to choose from a variety of technologies such as Node.js, React, Angular, among others, through an interactive menu.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **Dependency Management:** Automatically detects and notifies missing dependencies for the selected technology, providing links for installation.
 
-## Requirements
+## Extension usage instructions
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. **Download the Extension:**
 
-## Extension Settings
+   - Visit the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/).
+   - Search for our extension by entering the extension's name in the search bar.
+   - Click on the extension in the search results to view its details.
+   - Click the "Install" button to download and install the extension.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+2. **Activate the Extension:**
+   - Once the installation is complete, restart Visual Studio Code (if required).
+   - Open Visual Studio Code and use the shortcut Ctrl + Shift + P to open the command palette.
+   - Search **Project Crafter: Create Project** and press `Enter` to launch the extension.
 
-For example:
+Example:
+![](https://i.giphy.com/media/Ojmxd8syov2LaUAl6O/source.gif)
 
-This extension contributes the following settings:
+## Development instructions
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+To get started with ProjectCrafter, follow these steps:
 
-## Known Issues
+1. Clone this repository on your local machine:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+   ```bash
+   git clone https://github.com/fracergu/project-crafter.git
+   ```
 
-## Release Notes
+2. Install project dependencies:
+   ```bash
+   npm install
+   ```
+3. Initialize **Husky** to run the linter, code formatting, and unit tests.
+   ```bash
+   npm run prepare
+   ```
+4. Start the development:
 
-Users appreciate release notes as you update your extension.
+   In the project, press `F5` to build the extension, and press `Ctrl + Shift + P` and choose **Project Crafter: Create Project** to access the interactive menu.
 
-### 1.0.0
+## Contribution
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Contributions are welcome! If you find any issues or have ideas to improve ProjectCrafter, please [create an issue](https://github.com/fracergu/project-crafter/issues) or submit a [pull request](https://github.com/fracergu/project-crafter/pulls).
