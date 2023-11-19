@@ -20,7 +20,7 @@ import {
  * @returns The parsed Menu object containing the structure of technologies and their associated options.
  */
 export const loadJson = (context: vscode.ExtensionContext): Menu => {
-  const menuPath = path.join(context.extensionPath, 'data', 'menu.json')
+  const menuPath = path.join(context.extensionPath, 'src/assets', 'menu.json')
   const menuJson = fs.readFileSync(menuPath, 'utf8')
   const menu: Menu = JSON.parse(menuJson)
   return menu
@@ -36,9 +36,10 @@ export const loadJson = (context: vscode.ExtensionContext): Menu => {
  */
 export const verifyTechnologyDependency = async (
   dependency: TechnologyDependency,
+  execFunction = exec,
 ): Promise<boolean> =>
   new Promise((resolve) => {
-    exec(dependency.checkCommand, (error) => {
+    execFunction(dependency.checkCommand, (error) => {
       if (error) {
         vscode.window.showErrorMessage(
           `Dependency not found: ${dependency.name}. Please install it from ${dependency.installationUrl}`,
@@ -55,9 +56,9 @@ export const verifyTechnologyDependency = async (
  * It verifies if the object has a 'command' property, indicating it's not just a string or nested FrameworkOptions.
  *
  * @param obj - The object to be checked.
- * @returns True if the object is a CommandWithDependency, false otherwise.
+ * @returns True if the object is a object with a 'command' property, false otherwise.
  */
-export const isCommandWithDependency = (
+export const isNodeWithCommand = (
   obj: CommandWithDependency | FrameworkOptions,
 ): obj is CommandWithDependency => {
   return obj && typeof obj === 'object' && 'command' in obj
@@ -87,7 +88,7 @@ export const traverseOptions = async (
   const nextOptions = options[selectedOption]
   if (typeof nextOptions === 'string') {
     return nextOptions
-  } else if (isCommandWithDependency(nextOptions)) {
+  } else if (isNodeWithCommand(nextOptions)) {
     if (
       nextOptions.dependency &&
       !(await verifyTechnologyDependency(nextOptions.dependency))

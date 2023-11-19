@@ -74,21 +74,23 @@ export const askForProjectName = async (): Promise<string> => {
 
 /**
  * Asks the user whether they want to select a specific directory for their project.
- * If the user chooses 'Yes', it shows a dialog to select a folder. If the user selects a folder,
- * the function returns the path of that folder. If the user chooses 'No' or does not select a folder,
- * the function returns undefined.
  *
- * @returns A promise that resolves to the selected directory's path or undefined.
+ * @returns A promise that resolves to a boolean indicating whether the user wants to select a specific folder.
  */
-export const selectProjectDirectory = async (): Promise<string | undefined> => {
+const askToSelectProjectDirectory = async (): Promise<boolean> => {
   const shouldSelectFolder = await vscode.window.showQuickPick(['Yes', 'No'], {
     placeHolder: 'Do you want to select a specific folder for your project?',
   })
 
-  if (shouldSelectFolder !== 'Yes') {
-    return undefined
-  }
+  return shouldSelectFolder === 'Yes'
+}
 
+/**
+ * Shows a dialog to select a folder.
+ *
+ * @returns A promise that resolves to the selected directory's path or undefined.
+ */
+export const selectProjectDirectory = async (): Promise<string | undefined> => {
   const options: vscode.OpenDialogOptions = {
     canSelectMany: false,
     openLabel: 'Select',
@@ -96,10 +98,14 @@ export const selectProjectDirectory = async (): Promise<string | undefined> => {
     canSelectFiles: false,
   }
 
-  const folderUri = await vscode.window.showOpenDialog(options)
-  if (folderUri && folderUri.length > 0) {
-    return folderUri[0].fsPath
-  } else {
-    return undefined
+  if (await askToSelectProjectDirectory()) {
+    const folderUri = await vscode.window.showOpenDialog(options)
+    if (folderUri && folderUri.length > 0) {
+      return folderUri[0].fsPath
+    } else {
+      return undefined
+    }
   }
+
+  return undefined
 }
