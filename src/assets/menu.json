@@ -248,19 +248,6 @@
           "command": "go get -u github.com/gofiber/fiber/v2"
         }
       }
-    },
-    "Java": {
-      "dependency": {
-        "name": "Java",
-        "installationUrl": "https://www.oracle.com/java/technologies/downloads/",
-        "checkCommand": "java --version"
-      },
-      "installUrl": "https://www.oracle.com/java/technologies/javase-downloads.html",
-      "frameworks": {
-        "Spring": {
-          "command": "curl https://start.spring.io/starter.zip -o ${projectName}.zip"
-        }
-      }
     }
   }
 }
