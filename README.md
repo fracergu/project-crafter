@@ -1,6 +1,6 @@
 # ProjectCrafter
 
-![ProjectCrafter Logo](images/ProjectCrafterLogo.png)
+![ProjectCrafter Logo](https://i.postimg.cc/FHJSD3zy/Project-Crafter-Logo.png)
 
 ## Project Description
 
@@ -12,7 +12,21 @@ ProjectCrafter is an agile development Visual Studio Code extension designed to 
 
 - **Dependency Management:** Automatically detects and notifies missing dependencies for the selected technology, providing links for installation.
 
-## Installation
+## Extension usage instructions
+
+1. **Download the Extension:**
+
+   - Visit the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/).
+   - Search for our extension by entering the extension's name in the search bar.
+   - Click on the extension in the search results to view its details.
+   - Click the "Install" button to download and install the extension.
+
+2. **Activate the Extension:**
+   - Once the installation is complete, restart Visual Studio Code (if required).
+   - Open Visual Studio Code and use the shortcut Ctrl + Shift + P to open the command palette.
+   - Search **Project Crafter: Create Project** and press `Enter` to launch the extension.
+
+## Development instructions
 
 To get started with ProjectCrafter, follow these steps:
 
@@ -32,7 +46,7 @@ To get started with ProjectCrafter, follow these steps:
    ```
 4. Start the development:
 
-   In the project, press `F5` to build the extension, and press `Ctrl + Shift + P` and choose Project Crafter: Create Project to access the interactive menu.
+   In the project, press `F5` to build the extension, and press `Ctrl + Shift + P` and choose **Project Crafter: Create Project** to access the interactive menu.
 
 ## Contribution
 
