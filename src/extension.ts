@@ -7,11 +7,6 @@ import { askForProjectName, selectProjectDirectory } from './utils/app.utils'
 import { getTechnologyPrompt, getTerminalName } from './utils/prompts.utils'
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log(
-    vscode.workspace
-      .getConfiguration()
-      .get('project-crafter.creatreProject.selectTechnology'),
-  )
   const disposable = vscode.commands.registerCommand(
     'project-crafter.createProject',
     async () => {

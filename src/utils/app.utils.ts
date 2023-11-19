@@ -122,18 +122,22 @@ export const selectProjectDirectory = async (): Promise<string | undefined> => {
   return undefined
 }
 
-export const getLangConfig = () => {
-  const idioma = vscode.env.language
-  const rutaArchivo = path.join(__dirname, `../locales/${idioma}.json`)
+/**
+ * Gets the language configuration for the extension.
+ * The language configuration is stored in a JSON file in the locales folder.
+ * The language is determined by the VS Code language setting.
+ *
+ * @returns An object containing the language configuration.
+ */
+export const getLangConfig = (): Record<string, string> | undefined => {
+  const language = vscode.env.language
+  const pathFile = path.join(__dirname, `../locales/${language}.json`)
 
   try {
-    const contenido = fs.readFileSync(rutaArchivo, 'utf8')
-    const configuracion = JSON.parse(contenido)
+    const fileContent = fs.readFileSync(pathFile, 'utf8')
+    const configuracion = JSON.parse(fileContent)
     return configuracion
   } catch (error) {
-    console.error(
-      `Error al cargar el archivo de configuración del idioma: ${error}`,
-    )
     return undefined
   }
 }

@@ -1,11 +1,11 @@
 {
-  "project-crafter.createProject.selectTechnology": "Selecciona la tecnología para tu proyecto",
+  "project-crafter.lang.selectTechnology": "Selecciona la tecnología para tu proyecto",
   "project-crafter.lang.terminalName": "Terminal de Project Crafter",
   "project-crafter.lang.folderPath": "¿Quieres crear una carpeta para tu proyecto?",
   "project-crafter.lang.folderPath.yes": "Sí",
   "project-crafter.lang.folderPath.no": "No",
   "project-crafter.lang.projectName": "Ingresa el nombre de tu proyecto",
-  "project-crafter.createProject.select": "Selecciona",
+  "project-crafter.lang.select": "Selecciona",
   "project-crafter.lang.selectAnOption": "Selecciona una opción",
   "project-crafter.lang.dependencyNotFoundMessage": "Dependencia no encontrada: {0}. Por favor instalarla desde {1}."
 }

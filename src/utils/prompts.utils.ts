@@ -1,47 +1,52 @@
-import * as vscode from 'vscode'
 import { getLangConfig } from './app.utils'
 
 const languageConfig = getLangConfig()
 
-export const getTechnologyPrompt = vscode.workspace
-  .getConfiguration()
-  .get(
-    'project-crafter.lang.selectTechnology',
-    'Select the technology for your project',
-  )
+function getLanguageConfig(key: string, defaultValue: string): string {
+  return (languageConfig && languageConfig[key]) || defaultValue
+}
 
-export const getTerminalName = vscode.workspace
-  .getConfiguration()
-  .get('project-crafter.lang.terminalName', 'Project Crafter Terminal')
+export const getTechnologyPrompt = getLanguageConfig(
+  'project-crafter.lang.selectTechnology',
+  'Select the technology for your project',
+)
 
-export const getFolderPathMessage = vscode.workspace
-  .getConfiguration()
-  .get(
-    'project-crafter.lang.folderPath',
-    'Do you want to select a specific folder for your project?',
-  )
+export const getTerminalName = getLanguageConfig(
+  'project-crafter.lang.terminalName',
+  'Project Crafter Terminal',
+)
 
-export const getYesOption = vscode.workspace
-  .getConfiguration()
-  .get('project-crafter.lang.folderPath.yes', 'Yes')
+export const getFolderPathMessage = getLanguageConfig(
+  'project-crafter.lang.folderPath',
+  'Do you want to select a specific folder for your project?',
+)
 
-export const getNoOption = vscode.workspace
-  .getConfiguration()
-  .get('project-crafter.lang.folderPath.no', 'No')
+export const getYesOption = getLanguageConfig(
+  'project-crafter.lang.folderPath.yes',
+  'Yes',
+)
 
-export const getProjectNamePrompt = vscode.workspace
-  .getConfiguration()
-  .get('project-crafter.lang.projectName', 'Enter the name of your project')
+export const getNoOption = getLanguageConfig(
+  'project-crafter.lang.folderPath.no',
+  'No',
+)
 
-export const getSelectPrompt =
-  languageConfig['project-crafter.lang.select'] ?? 'Select'
+export const getProjectNamePrompt = getLanguageConfig(
+  'project-crafter.lang.projectName',
+  'Enter the name of your project',
+)
 
-export const getSelectAnOptionPrompt =
-  languageConfig['project-crafter.lang.selectAnOption'] ?? 'Select an option'
+export const getSelectPrompt = getLanguageConfig(
+  'project-crafter.lang.select',
+  'Select',
+)
 
-export const getDependencyNotFoundMessage = vscode.workspace
-  .getConfiguration()
-  .get(
-    'project-crafter.lang.dependencyNotFoundMessage',
-    'Dependency not found: {0}. Please install it from {1}',
-  )
+export const getSelectAnOptionPrompt = getLanguageConfig(
+  'project-crafter.lang.selectAnOption',
+  'Select an option',
+)
+
+export const getDependencyNotFoundMessage = getLanguageConfig(
+  'project-crafter.lang.dependencyNotFoundMessage',
+  'Dependency not found: {0}. Please install it from {1}',
+)

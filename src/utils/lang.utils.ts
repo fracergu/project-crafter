@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require('fs')
-const path = require('path')
-const ncp = require('ncp')
+
+import * as fs from 'fs'
+import * as path from 'path'
+import ncp from 'ncp'
 
 const sourceDir = path.join(__dirname, 'src')
 const destDir = path.join(__dirname, 'out')
 
-const copyJsonFiles = () => {
-  // Copia archivos .json de src a out
+const loadLanguages = () => {
   fs.readdirSync(sourceDir).forEach((file) => {
     const sourceFile = path.join(sourceDir, file)
     const destFile = path.join(destDir, file)
@@ -23,7 +23,6 @@ const copyJsonFiles = () => {
     }
   })
 
-  // Copia la carpeta locales de src a out
   const localesDir = path.join(sourceDir, 'locales')
   const destLocalesDir = path.join(destDir, 'locales')
 
@@ -36,4 +35,4 @@ const copyJsonFiles = () => {
   })
 }
 
-copyJsonFiles()
+loadLanguages()
