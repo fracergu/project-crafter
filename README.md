@@ -26,6 +26,9 @@ ProjectCrafter is an agile development Visual Studio Code extension designed to 
    - Open Visual Studio Code and use the shortcut Ctrl + Shift + P to open the command palette.
    - Search **Project Crafter: Create Project** and press `Enter` to launch the extension.
 
+Example:
+![](https://i.giphy.com/media/Ojmxd8syov2LaUAl6O/source.gif)
+
 ## Development instructions
 
 To get started with ProjectCrafter, follow these steps:
