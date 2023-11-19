@@ -41,7 +41,7 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./ && node utils/lang.utils.ts",
+    "compile": "tsc -p ./ && node i18nSetup.js",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint . --ext ts",

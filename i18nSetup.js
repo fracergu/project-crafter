@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
-import * as fs from 'fs'
-import * as path from 'path'
-import ncp from 'ncp'
+const fs = require('fs')
+const path = require('path')
+const ncp = require('ncp')
 
 const sourceDir = path.join(__dirname, 'src')
 const destDir = path.join(__dirname, 'out')
