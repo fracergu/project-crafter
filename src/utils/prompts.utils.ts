@@ -48,5 +48,10 @@ export const getSelectAnOptionPrompt = getLanguageConfig(
 
 export const getDependencyNotFoundMessage = getLanguageConfig(
   'project-crafter.lang.dependencyNotFoundMessage',
-  'Dependency not found: {0}. Please install it from {1}',
+  'Dependency not found: {0}. Please click the button below to install',
+)
+
+export const getDependencyNotFoundButton = getLanguageConfig(
+  'project-crafter.lang.dependencyNotFoundButton',
+  'Open installation URL',
 )

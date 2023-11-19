@@ -7,5 +7,6 @@
   "project-crafter.lang.projectName": "Enter the name of your project",
   "project-crafter.lang.select": "Select",
   "project-crafter.lang.selectAnOption": "Select an option",
-  "project-crafter.lang.dependencyNotFoundMessage": "Dependency not found: {0}. Please install it from {1}"
+  "project-crafter.lang.dependencyNotFoundMessage": "Dependency not found: {0}. Please click the button below to install",
+  "project-crafter.lang.dependencyNotFoundButton": "Open installation URL"
 }
