@@ -1,4 +1,5 @@
 {
+  "project-crafter.createProject": "Configuración simplificada de proyectos",
   "project-crafter.lang.selectTechnology": "Selecciona la tecnología para tu proyecto",
   "project-crafter.lang.terminalName": "Terminal de Project Crafter",
   "project-crafter.lang.folderPath": "¿Quieres crear una carpeta para tu proyecto?",

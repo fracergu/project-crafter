@@ -1,6 +1,6 @@
 # ProjectCrafter
 
-![ProjectCrafter Logo](https://i.postimg.cc/FHJSD3zy/Project-Crafter-Logo.png)
+![](https://i.giphy.com/media/Ojmxd8syov2LaUAl6O/source.gif)
 
 ## Project Description
 
@@ -27,7 +27,6 @@ ProjectCrafter is an agile development Visual Studio Code extension designed to 
    - Search **Project Crafter: Create Project** and press `Enter` to launch the extension.
 
 Example:
-![](https://i.giphy.com/media/Ojmxd8syov2LaUAl6O/source.gif)
 
 ## Development instructions
 

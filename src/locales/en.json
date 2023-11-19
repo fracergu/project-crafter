@@ -1,4 +1,5 @@
 {
+  "project-crafter.createProject": "Streamlined Project Setup",
   "project-crafter.lang.selectTechnology": "Select the technology for your project",
   "project-crafter.lang.terminalName": "Project Crafter Terminal",
   "project-crafter.lang.folderPath": "Do you want to select a specific folder for your project?",
