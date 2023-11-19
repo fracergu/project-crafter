@@ -9,7 +9,11 @@ export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     'project-crafter.createProject',
     async () => {
-      const menuPath = path.join(context.extensionPath, 'data', 'menu.json')
+      const menuPath = path.join(
+        context.extensionPath,
+        'src/assets',
+        'menu.json',
+      )
       const menuJson = fs.readFileSync(menuPath, 'utf8')
       const menu: Menu = JSON.parse(menuJson)
 
